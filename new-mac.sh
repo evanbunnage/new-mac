@@ -153,17 +153,24 @@ setup_api_keys() {
 }
 
 clone_repos() {
-    echo -e "${STATUS}Cloning configuration repositories...${NC}"
+    echo -e "${STATUS}Cloning essential repositories...${NC}"
     # Get configs and dotfiles
     if [ -d "$HOME_DIR/.config/nvim" ]; then
         mv "$HOME_DIR/.config/nvim" "$HOME_DIR/.config/nvim.backup.$(date +%Y%m%d_%H%M%S)"
     fi
 
-    gh repo clone evanbunnage/nvim "$HOME_DIR/.config/nvim/"
+    if ! gh repo clone evanbunnage/nvim "$HOME_DIR/.config/nvim/"; then
+        echo -e "${STATUS}The repo at .config/nvim already exists, not overwriting...${NC}"
+    fi
 
     if ! gh repo clone evanbunnage/new-mac "$HOME_DIR/projects/new-mac/"; then
-        echo -e "${STATUS}The setup repo /projects/new-mac already exists, not overwriting...${NC}"
+        echo -e "${STATUS}The repo at /projects/new-mac already exists, not overwriting...${NC}"
     fi
+
+    if ! gh repo clone evanbunnage/notes "$HOME_DIR/projects/notes/"; then
+        echo -e "${STATUS}The repo at /projects/notes already exists, not overwriting...${NC}"
+    fi
+
 }
 
 setup_dotfiles() {
