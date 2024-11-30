@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-mkdir -p /Users/evan/projects
+mkdir -p /Users/${USER}/projects
 
 # Change default keyboard settings beyond what is available in the settings UI
 # https://apple.stackexchange.com/questions/10467/how-to-increase-keyboard-key-repeat-rate-on-os-x
@@ -76,6 +76,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 # Download some python versions
 uv python install 3.11 3.12 3.13
 
+# Add API keys to environment
 touch ~/.api_keys
 chmod 600 ~/.api_keys
 # Add API keys to environment on shell startup
@@ -91,12 +92,12 @@ git config --global color.ui true
 gh auth login
 
 # Get configs and dotfiles
-gh repo clone evanbunnage/nvim /Users/evan/.config/nvim/
-gh repo clone evanbunnag/new-mac /Users/evan/projects/new-mac/
+gh repo clone evanbunnage/nvim /Users/{$USER}/.config/nvim/
+gh repo clone evanbunnag/new-mac /Users/{$USER}/projects/new-mac/
 
 # Create symlink for areospace config at root
 rm -f /Users/evan/.aerospace.toml
-ln -s projects/new-mac/dotfiles/.aerospace.toml /Users/evan/.aerospace.toml
+ln -s projects/new-mac/dotfiles/.aerospace.toml /Users/{$USER}/.aerospace.toml
 
 # Change some window behaviors for Aerospace
 defaults write -g NSWindowShouldDragOnGesture -bool true
