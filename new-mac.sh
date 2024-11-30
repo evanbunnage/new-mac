@@ -5,6 +5,7 @@ GREEN='\033[0;32m'   # Green
 NC='\033[0m'         # No Color
 
 HOME_DIR="/Users/$USER"
+PLIST_DIR="/Users/$USER/Library/Preferences"
 
 HOMEBREW_PACKAGES=(
     wget
@@ -34,7 +35,7 @@ main() {
     setup_api_keys || exit 1
     setup_git || exit 1
     clone_repos || exit 1
-    setup_dotfiles || exit 1
+    setup_config_files || exit 1
     
     echo -e "${GREEN}Setup complete, restart your 💻${NC}"
 }
@@ -154,7 +155,7 @@ setup_api_keys() {
 
 clone_repos() {
     echo -e "${STATUS}Cloning essential repositories...${NC}"
-    # Get configs and dotfiles
+
     if [ -d "$HOME_DIR/.config/nvim" ]; then
         mv "$HOME_DIR/.config/nvim" "$HOME_DIR/.config/nvim.backup.$(date +%Y%m%d_%H%M%S)"
     fi
@@ -173,8 +174,8 @@ clone_repos() {
 
 }
 
-setup_dotfiles() {
-    echo -e "${STATUS}Linking dotfiles...${NC}"
+setup_config_files() {
+    echo -e "${STATUS}Linking config files...${NC}"
 
     # Create symlink for dotfiles at ~/
     rm -f "$HOME_DIR/.aerospace.toml" # Aerospace auto-generates this on install
@@ -182,6 +183,10 @@ setup_dotfiles() {
 
     rm -f "$HOME_DIR/.zshrc"
     ln -s "$HOME_DIR/projects/new-mac/dotfiles/.zshrc" "$HOME_DIR/.zshrc" 
+
+    # Link super basic plist files
+    rm -f "$PLIST_DIR/eu.exelban.Stats.plist"
+    ln -s "$HOME_DIR/projects/new-mac/plists/eu.exelban.Stats.plist" "$PLIST_DIR/eu.exelban.Stats.plist"
 }
 
 # Run the script

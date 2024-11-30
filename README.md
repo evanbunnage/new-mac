@@ -21,6 +21,7 @@ It's also written to be run again and again safely (at your own risk).
 
 ### System settings
 1. Add the Colemak layout to OS keyboard, change caps lock modifier key
+1. Change the spring-loading speed in Accessibility > Preferences > Mouse & Trackpad
 
 ### nvim configs
 1. Install mason packages with `:Mason`
