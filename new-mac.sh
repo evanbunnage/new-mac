@@ -36,6 +36,7 @@ main() {
     setup_git || exit 1
     clone_repos || exit 1
     setup_config_files || exit 1
+    setup_launch_scripts || exit 1
     
     echo -e "${GREEN}Setup complete, restart your 💻${NC}"
 }
@@ -189,5 +190,25 @@ setup_config_files() {
     ln -s "$HOME_DIR/projects/new-mac/plists/eu.exelban.Stats.plist" "$PLIST_DIR/eu.exelban.Stats.plist"
 }
 
+setup_launch_scripts() {
+    echo -e "${STATUS}Setting up custom LaunchAgents...${NC}"
+    # Make launch scripts executable
+    find "$HOME_DIR/projects/new-mac/plists/LaunchAgents" \
+        -name "*.sh" \
+        -type f \
+        -exec chmod +x {} \;
+
+    # Link launch agent plists to Library/LaunchAgents
+    find "$HOME_DIR/projects/new-mac/plists/LaunchAgents" \
+        -name "*.plist" \
+        -type f \
+        -exec ln -s {} "$HOME_DIR/Library/LaunchAgents/" \;
+
+    # Load all launch agent plists
+    find "$HOME_DIR/projects/new-mac/plists/LaunchAgents" \
+        -name "*.plist" \
+        -type f \
+        -exec launchctl load {} \;
+}
 # Run the script
 main
