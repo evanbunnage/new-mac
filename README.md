@@ -1,6 +1,11 @@
 # new-mac
 
-# Apps
+The new-mac script is designed to be run before Homebrew or XCode tools are installed. 
+Just download the file, run it from anywhere and it should Just Work™.
+
+It's also written to be run again safely.
+
+# Apps not in homebrew
 
 - [Alttab](https://alt-tab-macos.netlify.app)
 - [iTerm2](https://iterm2.com/downloads.html)
@@ -12,15 +17,28 @@
 - [Affinity](https://store.serif.com/en-us/update/universal-licence/)
 - [HomeRow](https://www.homerow.app)
 
-### Post install
+## Post install
 
-To make nvm load lazily:
-- Add nvm to oh-my-zsh plugins array:
+### System settings
+1. Add the Colemak layout to OS keyboard, change caps lock modifier key
 
-`(git nvm)`
+### nvim configs
+1. Install mason packages with `:Mason`
+1. `cd ~/.local/share/nvim/lazy/friendly-snippets/ && gh pr checkout 507` to fix zls snippet (until 507 is merged)
 
-- Add to ~/.zshrc before oh-my-zsh is sourced:
+### App configs
+1. Configure BetterDisplay. With the Innocn 32 M2V you need to set the Color profile to 10 bit and
+enable Configuration Protection
+1. Setup HomeRow. Use super key + N, and super key + J for scroll. May need to switch based on
+OS scroll direction
+1. Configure Stats
 
-`zstyle ':omz:plugins:nvm' lazy yes`
+### Misc
+1. Test `zig` command, will need to grant permissions in Security & Privacy
+1. Download Zoom & co, set screen sharing permissions
+
+
+
+
 
 
