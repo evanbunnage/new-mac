@@ -44,6 +44,9 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 automatically-unhide-macos-hidden-apps = true
 
 # Possible values: (qwerty|dvorak)
+# Note (from Evan): Aerospace will register the physical key, not the virtual key. For colemak
+# this means that the macbook keyboard and my external keyboard can be out of sync. Use QWERTY config
+# and just make sure the shortcuts use keys that QWERTY and Colemak have in common 
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 [key-mapping]
 preset = 'qwerty'
