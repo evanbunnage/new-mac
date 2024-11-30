@@ -73,8 +73,9 @@ touch ~/.api_keys
 chmod 600 ~/.api_keys
 
 # Set up git
+read "git_email?Enter your email to use for the global git config: "
 git config --global user.name "Evan Bunnage"
-git config --global user.email "ebunnage@gmail.com"
+git config --global user.email "$git_email"
 git config --global color.ui true
 
 gh auth login
@@ -92,5 +93,3 @@ ln -s projects/new-mac/dotfiles/.zshrc /Users/$USER/.zshrc
 defaults write -g NSWindowShouldDragOnGesture -bool true
 defaults write com.apple.dock expose-group-apps -bool true && killall Dock
 defaults write com.apple.spaces spans-displays -bool true && killall SystemUIServer
-
-
