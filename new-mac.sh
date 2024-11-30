@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+mkdir -p /Users/evan/projects
+
 # Change default keyboard settings beyond what is available in the settings UI
 # https://apple.stackexchange.com/questions/10467/how-to-increase-keyboard-key-repeat-rate-on-os-x
 defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
@@ -24,6 +26,7 @@ brew install \
 
 # Install casks
 brew install --cask nikitabobko/tap/aerospace
+brew install --cask betterdisplay
 
 # Install nvm and node
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
@@ -59,7 +62,6 @@ chmod +x /usr/local/zig/zig
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
 
-
 # Install uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
@@ -80,5 +82,17 @@ git config --global color.ui true
 
 gh auth login
 
-# Get neovim config
+# Get configs and dotfiles
 gh repo clone evanbunnage/nvim /Users/evan/.config/nvim/
+gh repo clone evanbunnag/new-mac /Users/evan/projects/new-mac/
+
+# Create symlink for areospace config at root
+rm -f /Users/evan/.aerospace.toml
+ln -s projects/new-mac/dotfiles/.aerospace.toml /Users/evan/.aerospace.toml
+
+# Change some window behaviors for Aerospace
+defaults write -g NSWindowShouldDragOnGesture -bool true
+defaults write com.apple.dock expose-group-apps -bool true && killall Dock
+defaults write com.apple.spaces spans-displays -bool true && killall SystemUIServer
+
+
