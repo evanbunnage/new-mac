@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-mkdir -p /Users/${USER}/projects
+mkdir -p /Users/$USER/projects
 
 # Change default keyboard settings beyond what is available in the settings UI
 # https://apple.stackexchange.com/questions/10467/how-to-increase-keyboard-key-repeat-rate-on-os-x
@@ -9,9 +9,6 @@ defaults write -g KeyRepeat -int 1         # normal minimum is 2 (30 ms)
 
 # Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-if ! grep -q "eval \"\$(/opt/homebrew/bin/brew shellenv)\"" ~/.zshrc; then
-  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >>~/.zshrc
-fi
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Install homebrew packages
@@ -47,11 +44,6 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # Setup Zig
 sudo mkdir -p /usr/local/zig/
 
-# Add Zig to path if not already there
-if ! grep -q "export PATH=\$PATH:/usr/local/zig/" ~/.zshrc; then
-  echo 'export PATH=$PATH:/usr/local/zig/' >>~/.zshrc
-fi
-
 # Get latest zig master metadata
 json=$(curl -s https://ziglang.org/download/index.json)
 tarball=$(echo "$json" | grep -o 'https://ziglang.org/builds/zig-macos-aarch64-[^"]*')
@@ -79,10 +71,6 @@ uv python install 3.11 3.12 3.13
 # Add API keys to environment
 touch ~/.api_keys
 chmod 600 ~/.api_keys
-# Add API keys to environment on shell startup
-if ! grep -q "source  ~/.api_keys" ~/.zshrc; then
-  echo 'source  ~/.api_keys' >>~/.zshrc
-fi
 
 # Set up git
 git config --global user.name "Evan Bunnage"
@@ -92,12 +80,13 @@ git config --global color.ui true
 gh auth login
 
 # Get configs and dotfiles
-gh repo clone evanbunnage/nvim /Users/{$USER}/.config/nvim/
-gh repo clone evanbunnag/new-mac /Users/{$USER}/projects/new-mac/
+gh repo clone evanbunnage/nvim /Users/$USER/.config/nvim/
+gh repo clone evanbunnag/new-mac /Users/$USER/projects/new-mac/
 
 # Create symlink for areospace config at root
 rm -f /Users/evan/.aerospace.toml
-ln -s projects/new-mac/dotfiles/.aerospace.toml /Users/{$USER}/.aerospace.toml
+ln -s projects/new-mac/dotfiles/.aerospace.toml /Users/$USER/.aerospace.toml
+ln -s projects/new-mac/dotfiles/.zshrc /Users/$USER/.zshrc
 
 # Change some window behaviors for Aerospace
 defaults write -g NSWindowShouldDragOnGesture -bool true
