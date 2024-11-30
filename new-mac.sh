@@ -15,14 +15,22 @@ fi
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Install homebrew packages
-brew install \
-  wget \
-  neovim \
-  lazygit \
-  gh \
-  font-meslo-lg-nerd-font \
-  colima \
+HOMEBREW_PACKAGES=(
+  wget
+  neovim
+  lazygit
+  gh
+  font-meslo-lg-nerd-font
+  colima
   scroll-reverser
+  stats
+)
+
+# First uninstall every other homebrew package. This ensures that old packages are removed
+# when I re-run this script periodically
+brew list | grep -v "$(printf '%s\|' "${HOMEBREW_PACKAGES[@]}" | sed 's/|$//')" | xargs brew uninstall --force
+
+brew install "${HOMEBREW_PACKAGES[@]}"
 
 # Install casks
 brew install --cask nikitabobko/tap/aerospace
