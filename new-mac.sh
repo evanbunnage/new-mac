@@ -174,7 +174,7 @@ setup_dotfiles() {
     ln -s "$HOME_DIR/projects/new-mac/dotfiles/.aerospace.toml" "$HOME_DIR/.aerospace.toml"
 
     rm -f "$HOME_DIR/.zshrc"
-    ln -s "$HOME_DIR/projects/new-mac/dotfiles/.zshrc" "$HOME_DIR/.zshrc" || true
+    ln -s "$HOME_DIR/projects/new-mac/dotfiles/.zshrc" "$HOME_DIR/.zshrc" 
 }
 
 # Run the script
