@@ -1,9 +1,9 @@
 # new-mac
 
 The new-mac script is designed to be run before Homebrew or XCode tools are installed. 
-Just download the file, run it from anywhere and it should Just Work™.
+Just download the file, run it from anywhere and it should Just Work™ as long as your name is Evan Bunnage and you have access to all my repos 🙂 
 
-It's also written to be run again safely.
+It's also written to be run again and again safely (at your own risk).
 
 # Apps not in homebrew
 
