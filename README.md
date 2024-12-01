@@ -32,7 +32,6 @@ It's also written to be run again and again safely (at your own risk).
 enable Configuration Protection
 1. Setup HomeRow. Use super key + N, and super key + J for scroll. May need to switch based on
 OS scroll direction
-1. Configure Stats
 
 ### Misc
 1. Test `zig` command, will need to grant permissions in Security & Privacy
