@@ -232,3 +232,12 @@ run = ['layout floating']
 [[on-window-detected]]
 if.app-id = 'com.apple.MobileSMS'
 run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Music'
+run = ['layout floating']
+
+
+[[on-window-detected]]
+if.app-id = 'org.whispersystems.signal-desktop'
+run = ['layout floating']
