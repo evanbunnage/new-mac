@@ -1,11 +1,14 @@
 # new-mac
 
-The new-mac script is designed to be run before Homebrew or XCode tools are installed. 
+The 'new-mac.sh' script is designed to be run before Homebrew or XCode tools are installed. 
 Just download the file, run it from anywhere and it should Just Work™ as long as your name is Evan Bunnage and you have access to all my repos 🙂 
 
-It's also written to be run again and again safely (at your own risk).
+It's also written to be run again and again safely* (*at your own risk).
 
-# Apps not in homebrew
+
+## Post install
+
+### Apps not in Homebrew 
 
 - [Alttab](https://alt-tab-macos.netlify.app)
 - [iTerm2](https://iterm2.com/downloads.html)
@@ -17,14 +20,16 @@ It's also written to be run again and again safely (at your own risk).
 - [Affinity](https://store.serif.com/en-us/update/universal-licence/)
 - [HomeRow](https://www.homerow.app)
 
-## Post install
-
 ### System settings
 1. Add the Colemak layout to OS keyboard, change caps lock modifier key
 1. Change the spring-loading speed in Accessibility > Preferences > Mouse & Trackpad
+1. Ensure Ethernet priority is above Wifi in system settings
+1. Fix Spotlight search results:
+
+<img src="docs/images/spotlight_settings.png" alt="Spotlight settings" width="400">
 
 ### nvim configs
-1. Install mason packages with `:Mason`
+1. Install Mason packages with `:Mason`
 1. `cd ~/.local/share/nvim/lazy/friendly-snippets/ && gh pr checkout 507` to fix zls snippet (until 507 is merged)
 
 ### App configs
