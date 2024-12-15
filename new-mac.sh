@@ -17,6 +17,7 @@ HOMEBREW_PACKAGES=(
     scroll-reverser
     stats
     fzf
+    fd
 )
 
 main() {
