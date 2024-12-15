@@ -16,6 +16,7 @@ HOMEBREW_PACKAGES=(
     colima
     scroll-reverser
     stats
+    fzf
 )
 
 main() {
