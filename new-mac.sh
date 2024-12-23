@@ -18,6 +18,7 @@ HOMEBREW_PACKAGES=(
     stats
     fzf
     fd
+    ripgrep
 )
 
 main() {
