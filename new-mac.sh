@@ -19,6 +19,8 @@ HOMEBREW_PACKAGES=(
     fzf
     fd
     ripgrep
+    watch
+    jq
 )
 
 main() {
