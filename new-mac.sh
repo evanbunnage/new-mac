@@ -79,6 +79,7 @@ install_homebrew_packages() {
     # Install casks
     brew install --cask nikitabobko/tap/aerospace
     brew install --cask betterdisplay
+    brew install --cask ghostty
 }
 
 install_node() {

@@ -11,7 +11,6 @@ It's also written to be run again and again safely* (*at your own risk).
 ### Apps not in Homebrew 
 
 - [Alttab](https://alt-tab-macos.netlify.app)
-- [Ghostty](https://ghostty.org)
 - [Tailscale](https://login.tailscale.com/admin/machines)
 - [AlDente](https://apphousekitchen.com)
 - [Signal](https://signal.org/download/macos/)
