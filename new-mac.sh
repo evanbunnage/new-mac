@@ -21,6 +21,7 @@ HOMEBREW_PACKAGES=(
     ripgrep
     watch
     jq
+    git-lfs
 )
 
 main() {
@@ -33,6 +34,7 @@ main() {
     install_homebrew || exit 1
     install_homebrew_packages || exit 1
     install_node || exit 1
+    install_bun || exit 1
     install_rust || exit 1
     install_zig || exit 1
     install_oh_my_zsh || exit 1
@@ -87,6 +89,11 @@ install_node() {
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
     source ~/.zshrc
     nvm install node
+}
+
+install_bun() {
+  echo -e "${STATUS}Installing Bun...${NC}"
+  curl -fsSL https://bun.sh/install | bash
 }
 
 install_rust() {
